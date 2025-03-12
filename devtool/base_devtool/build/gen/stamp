@@ -1,0 +1,29 @@
+/home/zsy/zsy/lynx/tools/build_jni/prebuild_jni.sh:  File: "/home/zsy/zsy/lynx/tools/build_jni/prebuild_jni.sh"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/jni_generator.py:  File: "/home/zsy/zsy/lynx/tools/build_jni/jni_generator.py"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/jni_files:  File: "/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/jni_files"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/../../platform/android/../../devtool/base_devtool/android/base_devtool/src/main/java/com/lynx/basedevtool/DevToolSlot.java:  File: "/home/zsy/zsy/lynx/tools/build_jni/../../platform/android/../../devtool/base_devtool/android/base_devtool/src/main/java/com/lynx/basedevtool/DevToolSlot.java"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/../../platform/android/../../devtool/base_devtool/android/base_devtool/src/main/java/com/lynx/basedevtool/DevToolGlobalSlot.java:  File: "/home/zsy/zsy/lynx/tools/build_jni/../../platform/android/../../devtool/base_devtool/android/base_devtool/src/main/java/com/lynx/basedevtool/DevToolGlobalSlot.java"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/gen/DevToolSlot_jni.h:  File: "/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/gen/DevToolSlot_jni.h"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389516  Available: 242963648
+Inodes: Total: 67108864   Free: 66654522$/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/gen/DevToolGlobalSlot_jni.h:  File: "/home/zsy/zsy/lynx/tools/build_jni/../../devtool/base_devtool/build/gen/DevToolGlobalSlot_jni.h"
+    ID: 1f949bb74221f9b5 Namelen: 255     Type: ext2/ext3
+Block size: 4096       Fundamental block size: 4096
+Blocks: Total: 263940717  Free: 256389515  Available: 242963647
+Inodes: Total: 67108864   Free: 66654522$
