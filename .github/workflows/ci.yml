@@ -63,19 +63,43 @@ jobs:
 
   darwin-native-unittests-check:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
         with:
           path: lynx
+      - name: check python version
+        run: |
+          python3 --version
+          which python3
       - name: Install Common Dependencies
         uses: ./lynx/.github/actions/common-deps
       - name: Run Unittests
         run: |
           set -e
           source tools/envsetup.sh
-          tools/rtf/rtf native-ut run --names lynx
+          tools/rtf/rtf native-ut run --names lynx --disable-flutter-cxx
+
+  darwin-native-unittests-check-old:
+    timeout-minutes: 60
+    runs-on: lynx-darwin-14-medium
+    steps:
+      - name: Download Source
+        uses: actions/checkout@v4.2.2
+        with:
+          path: lynx
+      - name: check python version
+        run: |
+          python3 --version
+          which python3
+      - name: Install Common Dependencies
+        uses: ./lynx/.github/actions/common-deps
+      - name: Run Unittests
+        run: |
+          set -e
+          source tools/envsetup.sh
+          tools/rtf/rtf native-ut run --names lynx --disable-flutter-cxx
 
   linux-native-unittests-check:
     runs-on: lynx-ubuntu-22.04-large
@@ -119,7 +143,7 @@ jobs:
 
   ios-unittests-check:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
@@ -131,6 +155,10 @@ jobs:
         uses: ./lynx/.github/actions/ios-common-deps
         with:
           cache-backend: 'lynx-infra'
+      - name: Setup CocoaPods
+        shell: bash
+        run: |
+          brew install cocoapods
       - name: Install iOS Dependencies
         uses: nick-fields/retry@v2
         with:
@@ -142,6 +170,9 @@ jobs:
             source tools/envsetup.sh
             pushd explorer/darwin/ios/lynx_explorer
             git config --global url."https://github.com/".insteadOf "git@github.com:"
+            RUBY_ABI_VERSION=$(ruby -e 'puts RbConfig::CONFIG["ruby_version"]')
+            export GEM_HOME="$RUNNER_TEMP/cocoapods/ruby/$RUBY_ABI_VERSION"
+            export PATH="$RUNNER_TEMP/cocoapods/ruby/$RUBY_ABI_VERSION/bin:$PATH"
             bash bundle_install.sh --skip-card-build
             popd
       - name: Run Unittests
@@ -216,7 +247,7 @@ jobs:
 
   tasm-darwin-build:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
@@ -239,7 +270,7 @@ jobs:
 
   tasm-wasm-build:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
@@ -644,7 +675,7 @@ jobs:
 
   ios-explorer-build:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     strategy:
       matrix:
         arch: [arm64, x86_64]
@@ -667,7 +698,7 @@ jobs:
 
   ios-integration-test:
     timeout-minutes: 15
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     env:
       LOCAL_POD_NAME: 'local_pod'
       POD_VERSION: '0.0.1-alpha.1'
@@ -711,8 +742,7 @@ jobs:
           python3 lynx/tools/ios_tools/process_podfile.py --action insert_pod_source --podfile demo/ios/HelloLynxObjc/Podfile --pod_source "file://$GITHUB_WORKSPACE/lynx/$LOCAL_POD_NAME"
           cd demo/ios/HelloLynxObjc
           export LANG=en_US.UTF-8
-          BUNDLE_GEMFILE=$GITHUB_WORKSPACE/lynx/Gemfile bundle --version
-          BUNDLE_GEMFILE=$GITHUB_WORKSPACE/lynx/Gemfile bundle exec pod install
+          pod install
           xcodebuild -workspace Hello-Lynx-OC.xcworkspace/ -scheme Hello-Lynx-OC CODE_SIGNING_ALLOWED=NO build
 
   ios-e2e-test:
@@ -721,7 +751,7 @@ jobs:
     env:
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
@@ -892,7 +922,7 @@ jobs:
 
   clay-macos-build:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     steps:
       - name: Download Source
         uses: actions/checkout@v4.2.2
@@ -908,7 +938,7 @@ jobs:
 
   macos-explorer-build:
     timeout-minutes: 60
-    runs-on: lynx-darwin-14-medium
+    runs-on: lynx-darwin-15.6.1-medium
     strategy:
       matrix:
         arch: [arm64, x64]
